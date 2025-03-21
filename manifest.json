@@ -1,0 +1,10 @@
+{
+    "domain": "my_hood",
+    "name": "My Hood Integration",
+    "version": "0.0.2",
+    "requirements": ["bleak==0.22.3"],
+    "dependencies": [],
+    "codeowners": [],
+    "iot_class": "assumed_state",
+    "config_flow": false
+}
