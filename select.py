@@ -36,6 +36,11 @@ class HoodSuctionSelect(SelectEntity):
             "Max": "4",
         }
         if option in option_map:
-            await self.hood.set_hood_suction(option_map[option])
-            self._attr_current_option = option
-            self.async_write_ha_state()
+            try:
+                await self.hood.set_hood_suction(option_map[option])
+                self._attr_current_option = option
+            except Exception as e:
+                LOGGER.error(f"My_Hood: Failed to set suction level '{option}': {e}")
+                # Optionally notify the user or reset to known safe state here
+            finally:
+                self.async_write_ha_state()
